@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8c97a;
+  --color-gold-dark: #9a7530;
+  --color-burgundy: #6b1a1a;
+  --color-burgundy-light: #8b2a2a;
+  --color-dark: #0f0800;
+  --color-dark-2: #1a0e00;
+  --color-dark-3: #2a1800;
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #e8dfc8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0800;
+  color: #f5f0e8;
+  font-family: 'Georgia', serif;
+}
+
+.vintage-border {
+  border: 2px solid #c9a84c;
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.2), inset 0 0 10px rgba(201, 168, 76, 0.05);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #c9a84c 0%, #e8c97a 50%, #c9a84c 100%);
+}
+
+.dark-gradient {
+  background: linear-gradient(135deg, #1a0e00 0%, #2a1800 50%, #1a0e00 100%);
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(201, 168, 76, 0.3);
+}
+
+.countdown-digit {
+  font-variant-numeric: tabular-nums;
+  font-family: 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a0e00;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a84c;
+  border-radius: 4px;
+}
