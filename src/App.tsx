@@ -4,6 +4,11 @@ import Layout from '@/components/layout/Layout';
 import HomePage from '@/pages/HomePage';
 import ListingsPage from '@/pages/ListingsPage';
 import ListingDetailPage from '@/pages/ListingDetailPage';
+import SellPage from '@/pages/SellPage';
+import AuctionPage from '@/pages/AuctionPage';
+import AuctionDetailPage from '@/pages/AuctionDetailPage';
+import CreateAuctionPage from '@/pages/CreateAuctionPage';
+import AuthPage from '@/pages/AuthPage';
 import { seedDemoData } from '@/lib/seedData';
 
 export default function App() {

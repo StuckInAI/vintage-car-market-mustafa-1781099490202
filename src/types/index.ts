@@ -12,6 +12,14 @@ export interface AuthState {
   isAuthenticated: boolean;
 }
 
+export interface Bid {
+  id: string;
+  bidderId: string;
+  bidderName: string;
+  amount: number;
+  timestamp: string;
+}
+
 export interface CarListing {
   id: string;
   sellerId: string;
@@ -21,8 +29,8 @@ export interface CarListing {
   year: number;
   price: number;
   mileage: number;
-  condition: 'excellent' | 'good' | 'fair' | 'poor' | 'project';
-  fuelType: 'gasoline' | 'diesel' | 'electric' | 'hybrid' | 'other';
+  condition: string;
+  fuelType: string;
   transmission: string;
   bodyStyle: string;
   driveType: string;
@@ -39,25 +47,10 @@ export interface CarListing {
   zipCode: string;
   phone: string;
   email: string;
-  status: 'active' | 'sold' | 'pending';
+  status: 'active' | 'sold' | 'draft';
   createdAt: string;
   isAuction: boolean;
-  trim?: string;
-  negotiable?: boolean;
-  engineSize?: string;
-  cylinders?: string;
-  doors?: number;
-  sellerContact?: string;
-  sellerEmail?: string;
   listingType?: string;
-}
-
-export interface Bid {
-  id: string;
-  bidderId: string;
-  bidderName: string;
-  amount: number;
-  timestamp: string;
 }
 
 export interface AuctionListing {
@@ -66,6 +59,7 @@ export interface AuctionListing {
   car: CarListing;
   sellerId: string;
   sellerName: string;
+  location?: string;
   reservePrice: number;
   startingBid: number;
   currentBid: number;
@@ -77,10 +71,6 @@ export interface AuctionListing {
   endTime: string;
   durationHours: number;
   createdAt: string;
-  model?: string;
-  location?: string;
-  currentBidderName?: string;
-  listingType?: string;
 }
 
 export interface FilterState {

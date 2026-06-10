@@ -11,7 +11,7 @@ const defaultFilters: FilterState = {
   driveType: '', color: '', location: '', search: '',
 };
 
-export default function ListingsPage() {
+export default function BrowsePage() {
   const { listings } = useListings();
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
   const [searchText, setSearchText] = useState('');
