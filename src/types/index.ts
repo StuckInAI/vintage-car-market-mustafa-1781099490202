@@ -1,10 +1,16 @@
-export type CarCondition = 'excellent' | 'good' | 'fair' | 'poor' | 'project';
-export type FuelType = 'gasoline' | 'diesel' | 'electric' | 'hybrid' | 'other';
-export type TransmissionType = 'automatic' | 'manual' | '4-speed' | '3-speed' | 'semi-auto';
-export type BodyStyle = 'sedan' | 'coupe' | 'convertible' | 'wagon' | 'truck' | 'suv' | 'van' | 'roadster' | 'fastback' | 'hardtop';
-export type DriveType = 'rwd' | 'fwd' | 'awd' | '4wd';
-export type ListingStatus = 'active' | 'sold' | 'pending';
-export type AuctionStatus = 'upcoming' | 'live' | 'ended';
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: 'seller' | 'bidder' | 'both';
+  createdAt: string;
+}
+
+export interface AuthState {
+  user: User | null;
+  isAuthenticated: boolean;
+}
 
 export interface CarListing {
   id: string;
@@ -15,11 +21,11 @@ export interface CarListing {
   year: number;
   price: number;
   mileage: number;
-  condition: CarCondition;
-  fuelType: FuelType;
-  transmission: TransmissionType;
-  bodyStyle: BodyStyle;
-  driveType: DriveType;
+  condition: 'excellent' | 'good' | 'fair' | 'poor' | 'project';
+  fuelType: 'gasoline' | 'diesel' | 'electric' | 'hybrid' | 'other';
+  transmission: string;
+  bodyStyle: string;
+  driveType: string;
   color: string;
   interiorColor: string;
   engine: string;
@@ -33,9 +39,17 @@ export interface CarListing {
   zipCode: string;
   phone: string;
   email: string;
-  status: ListingStatus;
+  status: 'active' | 'sold' | 'pending';
   createdAt: string;
   isAuction: boolean;
+  trim?: string;
+  negotiable?: boolean;
+  engineSize?: string;
+  cylinders?: string;
+  doors?: number;
+  sellerContact?: string;
+  sellerEmail?: string;
+  listingType?: string;
 }
 
 export interface Bid {
@@ -58,25 +72,15 @@ export interface AuctionListing {
   highestBidderId: string;
   highestBidderName: string;
   bids: Bid[];
-  status: AuctionStatus;
+  status: 'upcoming' | 'live' | 'ended';
   startTime: string;
   endTime: string;
   durationHours: number;
   createdAt: string;
-}
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  role: 'seller' | 'bidder' | 'both';
-  createdAt: string;
-}
-
-export interface AuthState {
-  user: User | null;
-  isAuthenticated: boolean;
+  model?: string;
+  location?: string;
+  currentBidderName?: string;
+  listingType?: string;
 }
 
 export interface FilterState {
@@ -95,4 +99,5 @@ export interface FilterState {
   color: string;
   location: string;
   search: string;
+  searchText?: string;
 }

@@ -8,6 +8,18 @@ export function formatMileage(miles: number): string {
   return new Intl.NumberFormat('en-US').format(miles) + ' mi';
 }
 
+export function formatPrice(amount: number): string {
+  return formatCurrency(amount);
+}
+
+export function formatDate(dateStr: string): string {
+  return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+export function generateId(): string {
+  return Math.random().toString(36).substr(2, 9) + Date.now().toString(36);
+}
+
 export function formatTimeRemaining(endTime: string): { hours: number; minutes: number; seconds: number; expired: boolean } {
   const end = new Date(endTime).getTime();
   const now = Date.now();
@@ -21,8 +33,9 @@ export function formatTimeRemaining(endTime: string): { hours: number; minutes: 
 
 export function applyFilters(listings: CarListing[], filters: FilterState): CarListing[] {
   return listings.filter((car) => {
-    if (filters.search) {
-      const s = filters.search.toLowerCase();
+    const searchTerm = filters.search || filters.searchText || '';
+    if (searchTerm) {
+      const s = searchTerm.toLowerCase();
       const matched = car.make.toLowerCase().includes(s) ||
         car.model.toLowerCase().includes(s) ||
         car.title.toLowerCase().includes(s) ||
